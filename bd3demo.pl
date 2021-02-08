@@ -22,6 +22,9 @@ setsockopt(S,SOL_SOCKET,SO_RCVTIMEO,pack(q(l!l!), 5, 0));
 bind(S,sockaddr_in($p,INADDR_ANY));
 listen(S,50);
 
+# Прописываем обработчик сигнала в дочерних процессах, чтобы не появлялись зависшие детки в ps
+$SIG{CHLD} = sub { wait };
+
 # Работаем бесконечно, пока нас кто-нибудь не прибъёт
 while(1){
     # Ждём входящего соединения типа: $telnet localhost 16669
