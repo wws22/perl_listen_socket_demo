@@ -13,7 +13,7 @@ my $q=$e.q(quit).$e; # Определяем строку quit, с которой
 
 # Создаём слушающий сокет S
 socket(S,PF_INET,SOCK_STREAM,getprotobyname(q(tcp)));
-setsockopt(S,SOL_SOCKET,SO_REUSEADDR,1); # Говорим, что будем использовать его многократно/впаралель
+setsockopt(S,SOL_SOCKET,SO_REUSEADDR,1); # Говорим, что будем использовать его многократно/впараллель
 
 # Ставим таймаут 5 секунд, хотя это можно и не делать. Просто, так работа скрипта будет нагляднее
 setsockopt(S,SOL_SOCKET,SO_RCVTIMEO,pack(q(l!l!), 5, 0));
